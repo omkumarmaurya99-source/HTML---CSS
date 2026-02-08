@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PHONK BRAINROT 2026</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    cursor: crosshair;
+}
+canvas {
+    display: block;
+}
+.popup {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    pointer-events: none;
+    animation: pop 0.8s linear forwards;
+}
+@keyframes pop {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(2) rotate(720deg); opacity: 0; }
+}
+.controls {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔊 REAL PHONK MP3 -->
+<audio id="phonk" src="baile-rave.mp3" loop preload="auto"></audio>
+
+<div class="controls">
+    Click once to unlock audio<br>
+    P = Play | S = Stop | M = Mute | ↑ ↓ = Volume
+</div>
+
+<canvas id="c"></canvas>
+
+<script>
+/* ================= CANVAS ================= */
+const c = document.getElementById("c");
+const x = c.getContext("2d");
+
+function resize() {
+    c.width = innerWidth;
+    c.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
+
+let t = 0;
+
+/* ================= AUDIO ================= */
+const phonk = document.getElementById("phonk");
+phonk.volume = 0.5;
+
+// Unlock autoplay restriction
+document.addEventListener("click", () => {
+    phonk.play();
+}, { once: true });
+
+// Keyboard controls
+document.addEventListener("keydown", (e) => {
+    switch (e.key.toLowerCase()) {
+        case "p":
+            phonk.play();
+            break;
+        case "s":
+            phonk.pause();
+            phonk.currentTime = 0;
+            break;
+        case "m":
+            phonk.muted = !phonk.muted;
+            break;
+        case "arrowup":
+            phonk.volume = Math.min(phonk.volume + 0.1, 1);
+            break;
+        case "arrowdown":
+            phonk.volume = Math.max(phonk.volume - 0.1, 0);
+            break;
+    }
+});
+
+/* ================= TEXT ================= */
+const phrases = [
+    "PHONK MODE",
+    "BASS HEAVY",
+    "COWBELL TIME",
+    "FINAL BOSS",
+    "NO MERCY",
+    "SYSTEM OVERLOAD",
+    "BRAINROT 2026"
+];
+
+/* ================= EMOJI RAIN ================= */
+const emojis = ["💀","🔥","🧠","⚡","🗿","🚬"];
+const rain = Array.from({ length: 120 }, () => ({
+    x: Math.random() * innerWidth,
+    y: Math.random() * innerHeight,
+    s: Math.random() * 30 + 20,
+    v: Math.random() * 5 + 2,
+    e: emojis[Math.floor(Math.random() * emojis.length)]
+}));
+
+/* ================= POPUPS ================= */
+function popup(text) {
+    const d = document.createElement("div");
+    d.className = "popup";
+    d.style.left = Math.random() * innerWidth + "px";
+    d.style.top = Math.random() * innerHeight + "px";
+    d.style.color = `hsl(${Math.random() * 360},100%,60%)`;
+    d.textContent = text;
+    document.body.appendChild(d);
+    setTimeout(() => d.remove(), 800);
+}
+
+setInterval(() => {
+    popup(phrases[Math.floor(Math.random() * phrases.length)]);
+}, 800);
+
+/* ================= VISUALS ================= */
+function bg() {
+    x.fillStyle = `hsl(${(t * 2) % 360}, 100%, 10%)`;
+    x.fillRect(0, 0, c.width, c.height);
+}
+
+function shake() {
+    x.setTransform(
+        1, 0, 0, 1,
+        (Math.random() - 0.5) * 20,
+        (Math.random() - 0.5) * 20
+    );
+}
+
+function drawRain() {
+    rain.forEach(r => {
+        x.font = r.s + "px serif";
+        x.fillText(r.e, r.x, r.y);
+        r.y += r.v;
+        if (r.y > c.height + 50) {
+            r.y = -50;
+            r.x = Math.random() * c.width;
+        }
+    });
+}
+
+function drawText() {
+    const phrase = phrases[Math.floor(t / 20) % phrases.length];
+    x.save();
+    x.translate(c.width / 2, c.height / 2);
+    x.rotate(Math.sin(t / 10) * 0.3);
+    x.font = "bold 80px Impact";
+    x.textAlign = "center";
+
+    x.fillStyle = "red";   x.fillText(phrase, -6, 0);
+    x.fillStyle = "cyan"; x.fillText(phrase, 6, 0);
+    x.fillStyle = "white";x.fillText(phrase, 0, 0);
+
+    x.restore();
+}
+
+function border() {
+    x.lineWidth = 15 + Math.sin(t / 5) * 20;
+    x.strokeStyle = `hsl(${t % 360},100%,50%)`;
+    x.strokeRect(0, 0, c.width, c.height);
+}
+
+/* ================= LOOP ================= */
+function loop() {
+    x.setTransform(1, 0, 0, 1, 0, 0);
+    bg();
+    if (Math.random() < 0.3) shake();
+    drawRain();
+    drawText();
+    border();
+    t++;
+    requestAnimationFrame(loop);
+}
+
+loop();
+</script>
+</body>
+</html>
