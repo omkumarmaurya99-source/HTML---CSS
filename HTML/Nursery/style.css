@@ -1,8 +1,8 @@
 /* CSS Variables for consistent theming */
 :root {
-    --primary-color: #0ea5e9;
-    /* Light blue - healthcare friendly */
-    --primary-dark: #0284c7;
+    --primary-color: #22c55e;
+    /* Green - nature friendly */
+    --primary-dark: #16a34a;
     --secondary-color: #0f172a;
     /* Dark slate */
     --text-main: #334155;
@@ -76,7 +76,7 @@ ul {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
 }
 
 .btn-secondary {
@@ -101,7 +101,7 @@ ul {
 
 .btn-primary-small:hover {
     background-color: var(--primary-dark);
-    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
 }
 
 .btn-large {
@@ -165,7 +165,7 @@ ul {
 /* Hero Section */
 .hero {
     /* Using a high-quality relevant placeholder image from Unsplash */
-    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1466692476877-331dc912c9dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
     height: 100vh;
     min-height: 600px;
     display: flex;
