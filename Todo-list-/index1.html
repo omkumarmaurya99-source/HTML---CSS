@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuTodo | Brutal Productivity</title>
+    <meta name="description" content="A beautifully brutalist smart todo list application.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BEAUTIFUL NEUBRUTALIST LANDING PAGE -->
+    <div id="landing-wrapper" class="landing-wrapper">
+
+        <nav class="neu-nav">
+            <div class="logo">NEU<span class="logo-accent">TODO.</span></div>
+            <a href="#onboarding" class="neu-btn nav-btn">GET STARTED</a>
+        </nav>
+
+        <header class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">VERSION 3.0 LAUNCHED</div>
+                <h1 class="massive-title">
+                    <span class="highlight highlight-yellow">BRUTALLY</span><br>
+                    EFFECTIVE<br>
+                    <span class="highlight highlight-red">TODO APP.</span>
+                </h1>
+                <p class="hero-desc">Stop procrastinating. Experience the most unapologetic, aesthetically striking
+                    productivity tool on the web.</p>
+                <a href="#onboarding" class="neu-btn cta-btn">ENTER THE APP &rarr;</a>
+            </div>
+
+            <div class="hero-graphics">
+                <div class="shape shape-circle"></div>
+                <div class="shape shape-square">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <div class="shape shape-star">
+                    <svg viewBox="0 0 24 24" fill="#1a1a1a" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <div class="marquee-wrapper">
+            <div class="marquee">
+                <span>NO EXCUSES • JUST DO IT • FOCUS • BE BRUTAL • STAY HARD • </span>
+                <span>NO EXCUSES • JUST DO IT • FOCUS • BE BRUTAL • STAY HARD • </span>
+                <span>NO EXCUSES • JUST DO IT • FOCUS • BE BRUTAL • STAY HARD • </span>
+            </div>
+        </div>
+
+        <section id="onboarding" class="onboarding-section">
+            <div class="landing-card">
+                <h2 class="card-heading">IDENTIFY YOURSELF.</h2>
+                <div class="input-group">
+                    <label for="user-name">YOUR NAME</label>
+                    <input type="text" id="user-name" placeholder="E.g. John Doe" autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="user-age">YOUR AGE</label>
+                    <input type="number" id="user-age" placeholder="E.g. 25" autocomplete="off" min="1">
+                </div>
+
+                <button id="proceed-btn" class="neu-btn primary-btn btn-block">
+                    ACCESS DASHBOARD
+                </button>
+                <p class="disclaimer">No server. No tracking. 100% Local Storage.</p>
+            </div>
+        </section>
+
+        <footer class="neu-footer">
+            <p>&copy; 2026 NeuTodo. Built with uncompromising standards.</p>
+        </footer>
+    </div>
+
+    <!-- MAIN APP DASHBOARD -->
+    <main id="app-dashboard" class="dashboard hidden">
+        <header class="dashboard-header">
+            <div class="user-info">
+                <h1 id="greeting-text">HELLO, USER!</h1>
+                <div class="badges">
+                    <span class="neu-badge age-badge" id="age-display">AGE: 0</span>
+                    <span class="neu-badge streak-badge" id="streak-display">🔥 STREAK: 0 DAYS</span>
+                </div>
+            </div>
+            <button id="logout-btn" class="neu-btn icon-btn" title="Leave">EXIT</button>
+        </header>
+
+        <section class="task-input-section">
+            <input type="text" id="todo-input" class="neu-input" placeholder="What needs crushing today?"
+                autocomplete="off">
+            <button id="add-btn" class="neu-btn secondary-btn">ADD</button>
+        </section>
+
+        <nav class="filter-nav">
+            <button class="neu-btn filter-btn active" data-filter="all">ALL</button>
+            <button class="neu-btn filter-btn" data-filter="active">ACTIVE</button>
+            <button class="neu-btn filter-btn" data-filter="completed">DONE</button>
+        </nav>
+
+        <div class="tasks-container">
+            <ul id="todo-list" class="todo-list">
+                <!-- Todos injected by script.js -->
+            </ul>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
